@@ -1,0 +1,7 @@
+{
+  "name": "pokemonDex",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
