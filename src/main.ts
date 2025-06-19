@@ -1,14 +1,35 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { RouteReuseStrategy, provideRouter, withPreloading, PreloadAllModules } from '@angular/router';
-import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalone';
-
-import { routes } from './app/app.routes';
+import { provideHttpClient } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
+import { provideIonicAngular } from '@ionic/angular/standalone';
 import { AppComponent } from './app/app.component';
+import { routes } from './app/app.routes';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    provideHttpClient(),
+    provideRouter(routes),
     provideIonicAngular(),
-    provideRouter(routes, withPreloading(PreloadAllModules)),
   ],
+}); import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
+import { AppModule } from './app/app.module';
+import { environment } from './environments/environment';
+import { addIcons } from 'ionicons';
+import { heart, heartOutline, arrowBack, arrowForward } from 'ionicons/icons';
+
+if (environment.production) {
+  enableProdMode();
+}
+
+addIcons({
+  'heart': heart,
+  'heart-outline': heartOutline,
+  'arrow-next': arrowForward,
+  'arrow-previus': arrowBack,
 });
+
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch(err => console.error(err));
