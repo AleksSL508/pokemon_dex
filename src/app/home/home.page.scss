@@ -1,27 +1,305 @@
-#container {
+.header-title {
   text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  font-size: 1.5rem;
+  padding: 10px 0;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.pokemon-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 16px;
+  text-align: center;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+.pokemon-card:hover {
+  transform: translateY(-5px);
 }
 
-#container a {
-  text-decoration: none;
+.pokemon-img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-top: 15px;
+  margin-bottom: 8px;
+}
+
+.pokemon-name {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  margin-bottom: 6px;
+  color: #000000;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 0 10px;
+  min-height: 60px;
+  visibility: visible;
+  margin-bottom: 70px;
+  padding-bottom: 20px;
+  position: relative;
+  z-index: 10;
+}
+
+.page-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #000000;
+  cursor: pointer;
+  font-weight: bold;
+  border: 1px solid #ccc;
+}
+
+.page-number.active {
+  background: #EE8130;
+  color: #ffffff;
+  border-color: #EE8130;
+}
+
+.page-number:hover {
+  background: #CC5F2E;
+  color: #ffffff;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 100%;
+  margin: auto;
+  padding: 15px;
+  min-height: 0;
+}
+
+.pokemon-types {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  color: #000000;
+}
+
+ion-chip {
+  --color: #ffffff;
+  --background: #ccc;
+  font-size: 0.75rem;
+  padding: 0 8px;
+  border-radius: 10px;
+}
+
+/* Cores dos tipos */
+.type-fire {
+  --background: #EE8130;
+}
+
+.type-water {
+  --background: #6390F0;
+}
+
+.type-grass {
+  --background: #7AC74C;
+}
+
+.type-electric {
+  --background: #F7D02C;
+}
+
+.type-ice {
+  --background: #96D9D6;
+}
+
+.type-fighting {
+  --background: #C22E28;
+}
+
+.type-poison {
+  --background: #A33EA1;
+}
+
+.type-ground {
+  --background: #E2BF65;
+}
+
+.type-flying {
+  --background: #A98FF3;
+}
+
+.type-psychic {
+  --background: #F95587;
+}
+
+.type-bug {
+  --background: #A6B91A;
+}
+
+.type-rock {
+  --background: #B6A136;
+}
+
+.type-ghost {
+  --background: #735797;
+}
+
+.type-dragon {
+  --background: #6F35FC;
+}
+
+.type-dark {
+  --background: #705746;
+}
+
+.type-steel {
+  --background: #B7B7CE;
+}
+
+.type-fairy {
+  --background: #D685AD;
+}
+
+.type-normal {
+  --background: #A8A77A;
+}
+
+ion-button {
+  --background: #EE8130;
+  --color: #ffffff;
+  --border-radius: 20px;
+  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --padding-start: 15px;
+  --padding-end: 15px;
+}
+
+ion-button:hover {
+  --background: #CC5F2E;
+}
+
+ion-button:disabled {
+  --background: #cccccc;
+  --color: #666666;
+  opacity: 0.5;
+}
+
+/* Ajuste do ion-content */
+ion-content.ion-padding {
+  --padding-top: 0px !important;
+  --padding-bottom: 0px !important;
+  --offset-top: 0px !important;
+  --offset-bottom: 0px !important;
+  height: auto !important;
+  min-height: 100vh !important;
+  max-height: none !important;
+  display: block !important;
+  overflow: auto !important;
+  position: relative !important;
+  background: #000000;
+}
+
+/* Contêiner personalizado */
+.content-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #000000;
+  padding-bottom: 20px;
+}
+
+.grid-container {
+  flex-grow: 1;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pokemon-img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .pokemon-name {
+    font-size: 1rem;
+  }
+
+  .pagination {
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 5px;
+  }
+
+  .page-number {
+    width: 25px;
+    height: 25px;
+    font-size: 0.9rem;
+  }
+
+  ion-button {
+    --padding-start: 10px;
+    --padding-end: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+
+  .pokemon-img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .pokemon-name {
+    font-size: 0.9rem;
+  }
+
+  .pagination {
+    min-height: 40px;
+    padding-bottom: 10px;
+  }
+
+  .page-number {
+    width: 20px;
+    height: 20px;
+    font-size: 0.8rem;
+  }
+}
+
+.arrow-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background: #EE8130;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
 }
