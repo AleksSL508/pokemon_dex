@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="pokemon">{{ pokemon.name | titlecase }}</ion-title>
+    <ion-title *ngIf="!pokemon">Carregando...</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding pokedex-device">
+  <ion-spinner *ngIf="isLoading" name="crescent" class="loading-spinner"></ion-spinner>
+
+  <div *ngIf="pokemon && !isLoading" class="main-container">
+    <div class="pokedex-body">
+      <div class="pokedex-top">
+        <div class="pokeball-decoration"></div>
+        <h2 class="pokedex-brand">Pokémon</h2>
+      </div>
+
+      <!-- Tela principal -->
+      <div class="pokedex-screen">
+        <div class="pokemon-display">
+          <img [src]="pokemon.sprites.other['official-artwork'].front_default" alt="Imagem de {{ pokemon.name }}"
+            class="pokemon-image" />
+          <img
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/{{ pokemon.id }}.png"
+            alt="Shiny {{ pokemon.name }}" class="pokemon-shiny" *ngIf="pokemon.id" />
+          <h1 class="pokemon-name">{{ pokemon.name | titlecase }} <span>#{{ pokemon.id }}</span></h1>
+        </div>
+      </div>
+
+      <!-- Controles e botão de favoritar -->
+      <div class="pokedex-controls">
+        <div class="control-buttons">
+          <div class="button red"></div>
+          <div class="button green"></div>
+          <div class="button black"></div>
+        </div>
+        <ion-button (click)="toggleFavorite()" [color]="isFavorite ? 'danger' : 'success'" class="favorite-button">
+          <ion-icon slot="start" [name]="isFavorite ? 'heart' : 'heart-outline'"></ion-icon>
+        </ion-button>
+      </div>
+
+      <div class="pokedex-details">
+        <div class="detail-section">
+          <h3>Tipos</h3>
+          <div class="type-chips">
+            <ion-chip *ngFor="let type of pokemon.types" [color]="type.type.name" class="pokemon-type">
+              <ion-label>{{ type.type.name | titlecase }}</ion-label>
+            </ion-chip>
+          </div>
+        </div>
+
+        <div class="detail-section">
+          <h3>Habilidades</h3>
+          <ul class="ability-list">
+            <li *ngFor="let ability of pokemon.abilities">
+              {{ ability.ability.name | titlecase }}
+            </li>
+          </ul>
+        </div>
+
+        <div class="detail-section">
+          <h3>Status Base</h3>
+          <ion-list>
+            <ion-item *ngFor="let stat of pokemon.stats" class="stat-item">
+              <ion-label>{{ stat.stat.name | titlecase }}</ion-label>
+              <ion-badge color="secondary">{{ stat.base_stat }}</ion-badge>
+            </ion-item>
+          </ion-list>
+        </div>
+
+        <div class="detail-section">
+          <h3>Detalhes</h3>
+          <p><strong>Experiência base:</strong> {{ pokemon.base_experience }}</p>
+          <p><strong>Peso:</strong> {{ pokemon.weight / 10 }} kg</p>
+          <p><strong>Altura:</strong> {{ pokemon.height / 10 }} m</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="favorites-panel">
+      <h3>Favoritos</h3>
+      <ul class="favorite-list">
+        <li *ngFor="let favorite of favoritePokemons" (click)="goToFavoriteDetails(favorite.name)"
+          class="favorite-item">
+          {{ favorite.name | titlecase }} <span>#{{ favorite.id }}</span>
+        </li>
+        <li *ngIf="favoritePokemons.length === 0" class="no-favorites">Nenhum Pokémon favorito ainda.</li>
+      </ul>
+    </div>
+  </div>
+</ion-content>
