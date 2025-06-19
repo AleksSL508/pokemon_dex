@@ -1,0 +1,344 @@
+.pokedex-device {
+  background: #ffffff;
+  min-height: 100vh;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+}
+
+.loading-spinner {
+  display: block;
+  margin: 80px auto;
+  color: #ff4040;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  position: relative;
+}
+
+.pokedex-body {
+  background: #ff4040;
+  border-radius: 15px;
+  padding: 20px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  border: 2px solid #800000;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+.pokedex-top {
+  text-align: center;
+  padding: 10px 0;
+  background: #ffffff;
+  border-bottom: 2px solid #800000;
+  border-radius: 10px 10px 0 0;
+}
+
+.pokeball-decoration {
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #ff4040 70%, #800000 100%);
+  border: 2px solid #000000;
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.pokedex-brand {
+  font-size: 20px;
+  color: #ff4040;
+  font-weight: bold;
+  margin-top: 50px;
+  text-shadow: 1px 1px 2px #800000;
+}
+
+.pokedex-screen {
+  background: #1e90ff;
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+  padding: 25px;
+  margin: 30px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.pokemon-display {
+  background: #000000;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.favorite-button {
+  --background: transparent;
+  --border-color: #ffffff;
+  --color: #ffffff;
+  --padding-start: 5px;
+  --padding-end: 5px;
+  margin-left: 10px;
+  height: 30px !important;
+  width: 30px !important;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favorite-button ion-icon {
+  font-size: 18px;
+  margin: 0;
+}
+
+.pokemon-image {
+  width: 250px;
+  height: auto;
+  display: block;
+  margin: 0 auto 15px;
+  border: 3px solid #ffffff;
+  border-radius: 5px;
+}
+
+.pokemon-shiny {
+  width: 100px;
+  height: auto;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  opacity: 0.7;
+  border: 2px solid #ffd700;
+  border-radius: 5px;
+}
+
+.pokemon-name {
+  font-size: 28px;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  margin: 15px 0;
+
+  span {
+    font-size: 18px;
+    color: #ffd700;
+    font-weight: normal;
+  }
+}
+
+.pokedex-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  background: #ffffff;
+  border-top: 2px solid #800000;
+  border-radius: 0 0 10px 10px;
+  position: relative;
+}
+
+.control-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  &.red { background: #ff4040; }
+  &.green { background: #00ff00; }
+  &.black { background: #000000; }
+}
+
+.d-pad {
+  width: 40px;
+  height: 40px;
+  background: 
+    linear-gradient(45deg, #000000 25%, transparent 25%),
+    linear-gradient(-45deg, #000000 25%, transparent 25%),
+    linear-gradient(135deg, #000000 25%, transparent 25%),
+    linear-gradient(-135deg, #000000 25%, transparent 25%);
+  background-position: 0 0, 0 0, 20px 20px, 20px 20px;
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+}
+
+.pokedex-details {
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  border: 2px solid #ff4040;
+  max-width: 100%;
+}
+
+.detail-section {
+  margin-top: 15px;
+  text-align: left;
+}
+
+.detail-section h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #ff4040;
+  text-transform: uppercase;
+  border-bottom: 1px solid #ff4040;
+  padding-bottom: 5px;
+}
+
+.type-chips {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pokemon-type {
+  margin-right: 0;
+  text-transform: capitalize;
+  font-weight: bold;
+  --background: #2a4066;
+  --color: #ffffff;
+}
+
+.ability-list {
+  list-style: none;
+  padding: 0;
+  li {
+    background: #2a4066;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    color: #ffffff;
+    border-left: 4px solid #ff4040;
+  }
+}
+
+.stat-item {
+  --background: #2a4066;
+  --color: #ffffff;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  border-left: 4px solid #ff4040;
+}
+
+.detail-section p {
+  font-size: 14px;
+  color: #ddd;
+  margin: 5px 0;
+  strong {
+    color: #ff4040;
+  }
+}
+
+.favorites-panel {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  max-height: 500px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border: 2px solid #ff4040;
+  position: relative;
+  top: 100px;
+}
+
+.favorites-panel h3 {
+  font-size: 20px;
+  color: #ff4040;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.favorite-list {
+  list-style: none;
+  padding: 0;
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.favorite-item {
+  background: #2a4066;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  border-left: 4px solid #ff4040;
+}
+
+.favorite-item:hover {
+  background: #1e3a5f;
+}
+
+.no-favorites {
+  color: #666;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Media Query para telas menores */
+@media (max-width: 1000px) {
+  .main-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pokedex-body {
+    max-width: 90%;
+  }
+
+  .favorites-panel {
+    position: relative;
+    width: 90%;
+    margin-top: 20px;
+    right: auto;
+    top: auto;
+  }
+
+  .pokemon-image {
+    width: 180px;
+  }
+
+  .pokemon-shiny {
+    width: 90px;
+  }
+
+  .pokemon-name {
+    font-size: 22px;
+    span {
+      font-size: 14px;
+    }
+  }
+
+  .button {
+    width: 15px;
+    height: 15px;
+  }
+
+  .d-pad {
+    width: 30px;
+    height: 30px;
+    background-size: 30px 30px;
+    background-position: 0 0, 0 0, 15px 15px, 15px 15px;
+  }
+
+  .favorite-button {
+    height: 25px;
+    width: 25px;
+  }
+
+  .favorite-button ion-icon {
+    font-size: 16px; /* Ajuste proporcional para telas menores */
+  }
+}
